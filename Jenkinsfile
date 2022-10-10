@@ -23,6 +23,7 @@ pipeline {
                 script {
                     echo "building image"
                     //gv.buildImage()
+                    sh 'ls -l'
                 }
             }
         }
