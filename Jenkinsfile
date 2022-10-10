@@ -35,5 +35,12 @@ pipeline {
                 }
             }
         }
+        stage("read CSV file"){
+            steps {
+                script{
+                    gv.radCsv()
+                }
+            }
+        }
     }   
 }

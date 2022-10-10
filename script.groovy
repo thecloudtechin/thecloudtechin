@@ -16,4 +16,8 @@ def deployApp() {
     echo 'deploying the application...'
 } 
 
+def radCsv() {
+    echo 'Rading CSV file'
+} 
+
 return this
