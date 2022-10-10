@@ -15,10 +15,10 @@ def buildImage() {
 def deployApp() {
     echo 'deploying the application...'
 } 
-def deployApp(){
+def readCsv(){
  def mapList = []
  def headers = []
-new File("/path/to/your/file.csv").readLines().eachWithIndex { row, rowIndex ->
+new File("SynthiaProd_data.csv").readLines().eachWithIndex { row, rowIndex ->
     if (rowIndex == 0) { headers = row.split(',') }
     else {
         def tmpMap = [:]

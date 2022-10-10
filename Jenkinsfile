@@ -38,7 +38,7 @@ pipeline {
         stage("read CSV file"){
             steps {
                 script{
-                    gv.convertResultFile()
+                    gv.readCsv()
                 }
             }
         }
