@@ -16,8 +16,13 @@ def deployApp() {
     echo 'deploying the application...'
 } 
 
-def radCsv() {
-    echo 'Rading CSV file'
-} 
+def convertResultFile(String filename) {
+    def testsResults = [:]
+    def csv_content = readCSV file: SynthiaProd_data.csv
+    for (def record : csv_content) {
+        testsResults[record[0]] = record[1]
+    }
+    println testsResults
+}
 
 return this
