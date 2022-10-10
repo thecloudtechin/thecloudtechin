@@ -15,14 +15,19 @@ def buildImage() {
 def deployApp() {
     echo 'deploying the application...'
 } 
-
-def convertResultFile() {
-    def testsResults = [:]
-    def csv_content = readCSV file: SynthiaProd_data.csv
-    for (def record : csv_content) {
-        testsResults[record[0]] = record[1]
+def deployApp(){
+ def mapList = []
+ def headers = []
+new File("/path/to/your/file.csv").readLines().eachWithIndex { row, rowIndex ->
+    if (rowIndex == 0) { headers = row.split(',') }
+    else {
+        def tmpMap = [:]
+        def cells = row.split(',').eachWithIndex { cell, cellIndex ->
+          tmpMap[headers[cellIndex]] = cell
+        }
+        mapList.add(tmpMap)
     }
-    println testsResults
+}
 }
 
 return this
