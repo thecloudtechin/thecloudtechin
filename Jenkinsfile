@@ -6,41 +6,18 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv = load "script.groovy"
-                }
-            }
+                  def mapList = []
+def headers = []
+new File("SynthiaProd_data.csv").readLines().eachWithIndex { row, rowIndex ->
+    if (rowIndex == 0) { headers = row.split(',') }
+    else {
+        def tmpMap = [:]
+        def cells = row.split(',').eachWithIndex { cell, cellIndex ->
+          tmpMap[headers[cellIndex]] = cell
         }
-        stage("build jar") {
-            steps {
-                script {
-                    echo "building jar"
-                    //gv.buildJar()
-                }
-            }
-        }
-        stage("build image") {
-            steps {
-                script {
-                    echo "building image"
-                    //gv.buildImage()
-                    sh 'ls -l'
-                }
-            }
-        }
-        stage("deploy") {
-            steps {
-                script {
-                    echo "deploying"
-                    //gv.deployApp()
-                }
-            }
-        }
-        stage("read CSV file"){
-            steps {
-                script{
-                    gv.readCsv()
-                }
-            }
-        }
-    }   
+        mapList.add(tmpMap)
+    }
 }
+                }
+            }
+        }
