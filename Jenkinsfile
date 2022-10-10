@@ -5,19 +5,16 @@ pipeline {
     stages {
         stage("init") {
             steps {
-                script {
-                  def mapList = []
-def headers = []
-new File("SynthiaProd_data.csv").readLines().eachWithIndex { row, rowIndex ->
-    if (rowIndex == 0) { headers = row.split(',') }
-    else {
-        def tmpMap = [:]
-        def cells = row.split(',').eachWithIndex { cell, cellIndex ->
-          tmpMap[headers[cellIndex]] = cell
-        }
-        mapList.add(tmpMap)
-    }
-}
-                }
+               // script {
+                 // def is = new File("data.csv").newInputStream()
+                   // is.eachLine { 
+                    //println it
+                    //}
+                    //is.close()
+                    sh 'pwd'
+                    sh 'ls -l'
+               // }
             }
         }
+    }
+}
