@@ -16,7 +16,7 @@ def deployApp() {
     echo 'deploying the application...'
 } 
 
-def convertResultFile(String filename) {
+def convertResultFile() {
     def testsResults = [:]
     def csv_content = readCSV file: SynthiaProd_data.csv
     for (def record : csv_content) {
